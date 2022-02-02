@@ -15,5 +15,14 @@ function reverse(str) {
 
 console.log(reverse("Hi, My name is Eva"));
 
-const reverseTwo = str => ([...str].reverse().join(" "));
-console.log(reverseTwo("Hi, My name is Eva"))
+const reverseTwo = (str) => [...str].reverse().join(" ");
+console.log(reverseTwo("Hi, My name is Eva"));
+
+//merge and sort two arrays
+
+const merge = (arr1, arr2) => {
+    const arr3 = arr1.concat(arr2);
+    return arr3.sort();
+};
+
+console.log(merge([1, 2, 4], [3, 6, 5]));
