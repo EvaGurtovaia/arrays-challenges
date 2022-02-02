@@ -14,3 +14,6 @@ function reverse(str) {
 }
 
 console.log(reverse("Hi, My name is Eva"));
+
+const reverseTwo = str => ([...str].reverse().join(" "));
+console.log(reverseTwo("Hi, My name is Eva"))
