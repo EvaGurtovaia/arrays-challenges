@@ -124,3 +124,28 @@ console.log(maxProfit([7, 6, 4, 3, 1]));
 console.log(maxProfit([7, 1, 5, 3, 6, 4]));
 console.log(maxProfit([1, 3, 4, 6, 7]));
 console.log(maxProfit([2, 4, 1]));
+
+//Contains Duplicate
+//Given an integer array nums, return true if any value appears at least twice in the array,
+//and return false if every element is distinct.
+
+const containsDuplicate = (nums)  => {
+    let collection = [];
+    for (const num of nums) {
+      if (collection.includes(num)){
+        return true;    
+      }
+       collection.push(num)
+    }
+      return false
+  };
+
+
+const containsDuplicate2 = (nums)  => {
+    let collection = [...new Set(nums)]
+    if (collection.length  !== nums.length){
+      return true;
+    }
+      else return false;
+    };
+    console.log(containsDuplicate2( [1,3,4,2]));
