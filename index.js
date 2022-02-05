@@ -129,26 +129,24 @@ console.log(maxProfit([2, 4, 1]));
 //Given an integer array nums, return true if any value appears at least twice in the array,
 //and return false if every element is distinct.
 
-const containsDuplicate = (nums)  => {
+const containsDuplicate = (nums) => {
     let collection = [];
     for (const num of nums) {
-      if (collection.includes(num)){
-        return true;    
-      }
-       collection.push(num)
+        if (collection.includes(num)) {
+            return true;
+        }
+        collection.push(num);
     }
-      return false
-  };
+    return false;
+};
 
-
-const containsDuplicate2 = (nums)  => {
-    let collection = [...new Set(nums)]
-    if (collection.length  !== nums.length){
-      return true;
-    }
-      else return false;
-    };
-    console.log(containsDuplicate2( [1,3,4,2]));
+const containsDuplicate2 = (nums) => {
+    let collection = [...new Set(nums)];
+    if (collection.length !== nums.length) {
+        return true;
+    } else return false;
+};
+console.log(containsDuplicate2([1, 3, 4, 2]));
 
 //Maximum Number of Words Found in Sentences
 
@@ -156,10 +154,46 @@ const containsDuplicate2 = (nums)  => {
 //You are given an array of strings sentences, where each sentences[i] represents a single sentence.
 //Return the maximum number of words that appear in a single sentence.
 
-    const mostWordsFound = sentences => {
-        let maxWords = 0;
-        for (const sentence of sentences){
-            maxWords = Math.max(maxWords, sentence.split(' ').length);
+const mostWordsFound = (sentences) => {
+    let maxWords = 0;
+    for (const sentence of sentences) {
+        maxWords = Math.max(maxWords, sentence.split(" ").length);
+    }
+    return maxWords;
+};
+
+// Move zeroes
+//Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements.
+//Note that you must do this in-place without making a copy of the array.
+
+const moveZeroes = (nums) => {
+    for (let i = nums.length - 1; i >= 0; i--) {
+        // console.log(nums[i])
+        if (nums[i] === 0) {
+            //console.log(nums[i])
+            nums.push(nums[i]);
+            //console.log(nums)
+            nums.splice(i, 1);
+            //console.log(nums)
         }
-            return maxWords;
-    };
+    }
+    return nums;
+};
+
+console.log(moveZeroes([0, 0, 3, 12]));
+
+//You are given a large integer represented as an integer array digits,
+//where each digits[i] is the ith digit of the integer.
+//The digits are ordered from most significant to least significant in left-to-right order. The large integer does not contain any leading 0's.
+
+//Increment the large integer by one and return the resulting array of digits.
+//Input: digits = [1,2,3]
+//Output: [1,2,4]
+
+const plusOne = (digits) => {
+    const l = digits.length - 1;
+    if (digits[l] < 9) {
+        digits[l] = digits[l] + 1;
+        return digits;
+    } else return (BigInt(digits.join("")) + 1n).toString().split("");
+};
