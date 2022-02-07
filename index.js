@@ -197,3 +197,26 @@ const plusOne = (digits) => {
         return digits;
     } else return (BigInt(digits.join("")) + 1n).toString().split("");
 };
+
+// First Unique Character in a String
+
+//Given a string s, find the first non-repeating character in it and return its index.
+//If it does not exist, return -1.
+
+//Input: s = "leetcode"
+//Output: 0
+
+const firstUniqChar = (s) => {
+    let collection = new Map();
+
+    for (let i = 0; i < s.length; i++) {
+        collection.set(s[i], (collection.get(s[i]) || 0) + 1);
+    }
+
+    for (let i = 0; i < s.length; i++) {
+        if (collection.get(s[i]) === 1) return i;
+    }
+    return -1;
+};
+
+console.log(firstUniqChar("leetcode"));
