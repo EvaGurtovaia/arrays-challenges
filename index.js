@@ -220,3 +220,41 @@ const firstUniqChar = (s) => {
 };
 
 console.log(firstUniqChar("leetcode"));
+
+// Valid Anagram
+//Given two strings s and t, return true if t is an anagram of s, and false otherwise.
+
+//An Anagram is a word or phrase formed by rearranging the letters of a different word
+//or phrase, typically using all the original letters exactly once.
+
+//Input: s = "anagram", t = "nagaram"
+//Output: true
+
+//Input: s = "rat", t = "car"
+//Output: false
+
+const isAnagram = (s, t) => {
+    if (s.length !== t.length) return false;
+
+    let collection = {};
+    let collection2 = {};
+
+    for (let val of s) {
+        collection[val] = (collection[val] || 0) + 1;
+    }
+
+    for (let val of t) {
+        collection2[val] = (collection2[val] || 0) + 1;
+    }
+    console.log(collection);
+    console.log(collection2);
+    for (let key in collection) {
+        if (!(key in collection2)) {
+            return false;
+        }
+        if (collection2[key] !== collection[key]) {
+            return false;
+        }
+    }
+    return true;
+};
