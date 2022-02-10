@@ -263,10 +263,39 @@ const isAnagram = (s, t) => {
 //and count the unique values in the array. There can be negative numbers in the array,
 //but it will always be sorted.
 
-const countUniqueValues = arr => {
+const countUniqueValues = (arr) => {
     let result = new Set(arr);
-    return result.size
-  
- }
-     
- console.log(countUniqueValues([1,2,3,4,4,4,7,7,12,12,13]));  //7
+    return result.size;
+};
+
+console.log(countUniqueValues([1, 2, 3, 4, 4, 4, 7, 7, 12, 12, 13])); //7
+
+//You are given an integer array nums consisting of n elements, and an integer k.
+//Find a contiguous subarray whose length is equal to k
+//that has the maximum average value and return this value.
+//Any answer with a calculation error less than 10-5 will be accepted.
+
+//Input: nums = [1,12,-5,-6,50,3], k = 4
+//Output: 12.75000
+//Explanation: Maximum average is (12 - 5 - 6 + 50) / 4 = 51 / 4 = 12.75
+
+const findMaxAverage = (nums, k) => {
+    let maxSum = 0;
+    let tempSum = 0;
+    if (nums.length < k) return null;
+    for (let i = 0; i < k; i++) {
+        maxSum += nums[i];
+    }
+
+    tempSum = maxSum;
+
+    for (let j = k; j < nums.length; j++) {
+        tempSum = tempSum - nums[j - k] + nums[j];
+        maxSum = Math.max(maxSum, tempSum);
+    }
+
+    let maxAvr = maxSum / k;
+    return maxAvr;
+};
+
+console.log(findMaxAverage([1, 12, -5, -6, 50, 3], 4));
