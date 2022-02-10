@@ -348,3 +348,41 @@ const search = (nums, target) => {
 };
 
 console.log(search([-1, 0, 3, 5, 9, 12], 9));
+
+//Same Frequency Challenge
+
+//Write a function called sameFrequency. Given two positive integers,
+//find out if the two numbers have the same frequency of digits.
+
+function sameFrequency(n, n2) {
+    let nums = n.toString().split("");
+    let nums2 = n2.toString().split("");
+    if (nums.length !== nums2.length) {
+        return false;
+    }
+    let collection = {};
+    let collection2 = {};
+
+    for (let num of nums) {
+        collection[num] = (collection[num] || 0) + 1;
+    }
+
+    for (let num of nums2) {
+        collection2[num] = (collection2[num] || 0) + 1;
+    }
+    console.log(collection);
+    console.log(collection2);
+
+    for (let key in collection) {
+        if (!(key in collection2)) {
+            return false;
+        }
+
+        if (collection2[key] !== collection[key]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+console.log(sameFrequency(182, 281));
