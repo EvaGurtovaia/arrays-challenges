@@ -320,3 +320,31 @@ const sortedSquares = (nums) => {
 };
 
 console.log(sortedSquares([-4, -1, 0, 3, 10]));
+
+// Binary Search
+
+//Given an array of integers nums which is sorted in ascending order,
+//and an integer target, write a function to search target in nums.
+//If target exists, then return its index. Otherwise, return -1.
+
+//You must write an algorithm with O(log n) runtime complexity.
+
+const search = (nums, target) => {
+    let min = 0;
+    let max = nums.length - 1;
+
+    while (min <= max) {
+        let middle = Math.floor((min + max) / 2);
+
+        if (nums[middle] < target) {
+            min = middle + 1;
+        } else if (nums[middle] > target) {
+            max = middle - 1;
+        } else {
+            return middle;
+        }
+    }
+    return -1;
+};
+
+console.log(search([-1, 0, 3, 5, 9, 12], 9));
