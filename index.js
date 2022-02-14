@@ -386,3 +386,31 @@ function sameFrequency(n, n2) {
 }
 
 console.log(sameFrequency(182, 281));
+
+// Write a function called averagePair. Given a sorted array of integers and a target average,
+// determine if there is a pair of values in the array where the average of the pair
+//equals the target average. There be more than one pair that matches the average target.
+
+const averagePair = (arr, target) => {
+    if (arr.length === 0) {
+        return false;
+    }
+    let start = 0;
+    let end = arr.length - 1;
+
+    while (start < end) {
+        let aver = (arr[start] + arr[end]) / 2;
+        console.log(`aver is ${aver}`);
+        if (aver === target) {
+            return true;
+        }
+        if (aver < target) {
+            start++;
+            console.log(`start is ${start}`);
+        } else end--;
+        console.log(`end is ${end}`);
+    }
+    return false;
+};
+
+console.log(averagePair([1, 2, 3], 5));
